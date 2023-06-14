@@ -1,0 +1,213 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>The official website of the Fiji National Rugby League | Fiji Bati</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="To keep up to date with FNRL news, rugby league games, draws, ladder and other relevant information.">
+
+       <!-- Open Graph meta tags for Facebook sharing -->
+        <meta property="og:url" content="https://www.fijibati.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="{{ news.title }}" />
+        <meta property="og:description" content=" Fiji Bati" />
+        <meta property="og:image" content="/media/{{ news.image }}" />           
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">    
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.tiny.cloud/1/9htr8eioxorsfsr13lmuuvr6wev9om9603xjm01s9c6zni5p/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0" nonce="qAHasQ26"></script>
+
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/card.css' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'media/images/favicon.jpg' %}">
+
+        <script src="{% static 'js/card.js' %}"></script>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/popper.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+        
+    </head>
+    <body>
+		<div class="wrapper">
+			<nav id="sidebar">
+				<div class="p-4 pt-3">
+                    <a href="/" class="img logo rounded-circle mb-5"><img src="{% static 'media/images/final_logo.png' %}" style="margin-bottom: -5px;"></a>
+                        <ul class="list-unstyled components my-5">
+                            <li {% if request.path == '/' %}class="active"{% endif %}>
+                                <a href="{% url 'all-news' %}">NEWS</a>       
+                            </li>
+                            <li>
+                                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">ABOUT</a>
+                                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                                            
+                                        <li {% if request.path == 'mission' %}class="active"{% endif %}>
+                                            <a href="{% url 'mission' %}">MISSION</a>
+                                        </li>
+                                        <li {% if request.path == 'govern' %}class="active"{% endif %}>
+                                                <a href="{% url 'govern' %}">GOVERNANCE</a>
+                                        </li>
+                                    </ul>
+                            </li>
+                            <li>
+                                <a href="#">DRAW</a>       
+                            </li>
+                            <li>
+                                <a href="#">LADDER</a>       
+                            </li>
+                            <li>
+                                <a href="#">STATS</a>       
+                            </li>
+                            <li>
+                                <a href="#">PLAYERS</a>       
+                            </li>
+                            <li>
+                                <a href="#">MORE</a>       
+                            </li>
+                            <li>
+                                <a href="#">MEMBERSHIP</a>       
+                            </li>
+                            <li {% if request.path == 'contact' %}class="active"{% endif %}>
+                            <a href="{% url 'contact' %}">CONTACT</a>
+                            </li>
+                            {% if user.is_authenticated %}
+                            <li {% if request.path == 'logout' %}class="active"{% endif %}>
+                                <a href="{% url 'profile' %}">MY PROFILE</a>
+                            </li>
+                            <li {% if request.path == 'logout' %}class="active"{% endif %}>
+                                <a href="{% url 'account_logout' %}">LOGOUT</a>
+                            </li>
+                            {% else %}
+                            <li {% if request.path == 'login' %}class="active"{% endif %}>
+                                <a href="{% url 'account_login' %}">LOGIN</a>
+                            </li>
+                            {% endif %}
+                           
+	            </div>
+    	    </nav>
+            
+
+                <!-- Page Content  -->
+            <div class="content bg-light">
+                <nav class="navbar navbar-expand-lg navbar-light bg-dark desktop-hide">
+                      <button type="button" id="sidebarCollapse" class="btn">
+                    
+                            <a href="/"><img src="{% static 'media/images/mobile_logo.png' %}" class="logo" style="align-items: center;" alt="Logo"></a>
+                  
+                      </button>
+                      <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                          <i class="fa fa-bars"></i>
+                      </button>
+          
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent" style="color: #fff;">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="active">
+                                <a href="/">NEWS</a>       
+                            </li>
+                            <li>
+                                <a href="#dropdown-submenu" data-toggle="collapse" role="button" aria-expanded="false" class="dropdown-toggle">ABOUT US</a>
+                                    <ul class="collapse list-unstyled" id="dropdown-submenu">
+                                            
+                                        <li>
+                                            <a href="{% url 'mission' %}">MISSION</a>
+                                        </li>
+                                        <li>
+                                                <a href="{% url 'govern' %}">GOVERNANCE</a>
+                                        </li>
+                                    </ul>
+                            </li>
+                            <li>
+                                <a href="#">DRAW</a>       
+                            </li>
+                            <li>
+                                <a href="#">LADDER</a>       
+                            </li>
+                            <li>
+                                <a href="#">STATS</a>       
+                            </li>
+                            <li>
+                                <a href="#">PLAYERS</a>       
+                            </li>
+                            <li>
+                                <a href="#">MORE</a>       
+                            </li>
+                            <li>
+                                <a href="#">MEMBERSHIP</a>       
+                            </li>
+                            <li>
+                            <a href="{% url 'contact' %}">CONTACT</a>
+                            </li>
+                        </ul>
+                      </div>
+                  
+                  </nav>
+
+                        {% block content %}{% endblock content %}
+                <hr/>
+                    <div class="row bg-light">
+                        <div class="col ml-3 my-3">
+                            <h3 style="color: #F57E1F; font-size: 14px; text-align: center;">OUR MAJOR SPONSOR & OFFICIAL NETWORK</h3>
+                            <a class="image-link" href="https://www.vodafone.com.fj" target="_blank"><img src="{% static 'media/images/voda.png' %}" alt="Vodafone"></a>
+
+                        </div>
+                        <div class="col ml-3 my-3">
+                            <h3 style="color: #F57E1F; font-size: 14px; text-align: center;">OUR MAJOR SPONSOR & OFFICIAL NETWORK</h3>
+                            <a class="image-link" href="https://www.vodafone.com.fj" target="_blank"><img src="{% static 'media/images/voda.png' %}" alt="Vodafone"></a>
+
+                        </div>
+                        <div class="col ml-3 mr-3 my-3">
+                            <h3 style="color: #F57E1F; font-size: 14px; text-align: center;">OUR MAJOR SPONSOR & OFFICIAL NETWORK</h3>
+                            <a class="image-link" href="https://www.vodafone.com.fj" target="_blank"><img src="{% static 'media/images/voda.png' %}" alt="Vodafone"></a>
+
+                        </div>
+                    </div>                    
+                    <div class="row my-3" style="background-color: black;">
+                        <div class="col-sm-12 ml-3 mr-3">
+                            <div class="header my-4" style="display: flex;">
+                                <p class="inline-heading" style="color: #F57E1F; font-size: 14px;"> FOLLOW THE FIJI BATI</p>
+                                    <div class="social-icons ml-3" style="font-size: 20px;">
+                                            <a href="https://www.facebook.com/fijirugbyleague" target="_blank">
+                                                <i class="fab fa-facebook fa-2x ml-3"></i>
+                                            </a>
+                                            
+                                            <a href="https://twitter.com/fijirugbyleague" target="_blank">
+                                                <i class="fab fa-twitter fa-2x ml-3"></i>
+                                            </a>
+                                            
+                                            <a href="https://www.instagram.com/fijirugbyleague/" target="_blank">
+                                                <i class="fab fa-instagram fa-2x ml-3"></i>
+                                            </a>
+                                    </div>
+                                    <p class="inline-heading ml-3" style="color: #F57E1F; font-size: 14px;">{{ visitor_count }} visit here</p>
+                            </div>
+                        </div>
+                        <div class="row">  
+                            <div class="col ml-5 mb-3">
+                                <h3 style="color: #F57E1F; font-size: 14px;">CLUB SITES</h3>
+                                <div class="mt-4 image-group" style="display: flex; ">
+                                    <a href="https://www.facebook.com/profile.php?id=100063759725238" target="_blank"><img src="{% static 'media/images/nadera.png' %}" alt="Nadera Panthers Club"><p class="image-caption" style="color: #F57E1F;text-align: center;">Nadera</p></a>
+                                    <a class="ml-5" href="https://www.facebook.com/lami.steelers/" target="_blank"><img src="{% static 'media/images/lami.png' %}" alt="Lami Steelers Club"><p class="image-caption" style="color: #F57E1F; text-align: center;">Lami</p></a>
+                                    <a class="ml-5" href="https://www.facebook.com/makoibulldogs/" target="_blank"><img src="{% static 'media/images/makoi.png' %}" alt="Makoi Bulldogs Club"><p class="image-caption" style="color: #F57E1F; text-align: center;">Makoi</p></a>       
+                                </div>
+                                <hr/>    
+                            </div>
+                            <div class="row my-3" style="background-color: black;">   
+                                <div class="col">
+                                    <div class="footer">
+                                        <p class="float-right " style="color: #fff; font-size: 12px;">&copy;<script>document.write(new Date().getFullYear());</script>  Fiji National Rugby League | Fiji Bati    <img src="{% static 'media/images/logo_footer.png' %}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+	        </div> 
+        </div> 
+    </body>
+</html>
