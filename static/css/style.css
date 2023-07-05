@@ -3778,6 +3778,7 @@ input[type="button"].btn-block {
   -ms-flex-direction: column;
   flex-direction: column;
   min-width: 0;
+  font-family: "Barlow", sans-serif;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
@@ -8100,14 +8101,16 @@ a.text-dark:hover, a.text-dark:focus {
   h2,
   h3 {
     orphans: 3;
-    widows: 3; }
+    widows: 3;
+    font-family: "Barlow", sans-serif; }
   h2,
   h3 {
     page-break-after: avoid; }
   @page {
     size: a3; }
   body {
-    min-width: 992px !important; }
+    min-width: 992px !important;
+    font-family: "Barlow", sans-serif; }
   .container {
     min-width: 992px !important; }
   .navbar {
@@ -8134,7 +8137,7 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 body {
-  font-family: "Barlow", Arial, sans-serif;
+  font-family: "Barlow";
   font-size: 14px;
   line-height: 1.8;
   font-weight: normal;
@@ -8251,10 +8254,10 @@ h1, h2, h3, h4, h5,
       color: #fff;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
       #sidebar ul li a:hover {
-        color: #f8b739; }
+        color: #F57E1F; }
     #sidebar ul li.active > a {
       background: transparent;
-      color: #f8b739; }
+      color: #F57E1F; }
   @media (max-width: 991.98px) {
     #sidebar {
       margin-left: -185px;

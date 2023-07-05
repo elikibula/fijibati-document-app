@@ -5,7 +5,8 @@ from tinymce.widgets import TinyMCE
 from django.utils import timezone
 from django.urls import reverse
 from django.contrib.auth.models import User, AbstractUser, Group, Permission
- 
+from private_storage.fields import PrivateFileField
+
 
 
 # Member Profile
@@ -85,4 +86,22 @@ class Comment(models.Model):
 class Visitor(models.Model):
     ip_address = models.GenericIPAddressField()
     timestamp = models.DateTimeField(auto_now_add=True)
+
+#Document Storage
+class DocumentCategory(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+class Document(models.Model):
+    title = models.CharField(max_length=200)
+    file = models.FileField(upload_to='documents/')
+    description = models.TextField(blank=True)
+    category = models.ForeignKey(DocumentCategory, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.title
+
+
 

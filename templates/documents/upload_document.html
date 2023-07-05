@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row my-3 ml-4 mr-4">
+    <div class="col-md-12">
+        <div class="card mb-3 shadow pl-4 py-4 pr-4">
+            <h1>Upload Document</h1>
+            <form method="post" action="{% url 'documents:upload_document' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-dark">Upload Document</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

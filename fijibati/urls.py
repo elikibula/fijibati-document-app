@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
+from documents.models import Document, DocumentCategory
+
 
 # Admin Site Config
 admin.site.site_header = 'Fiji National Rugby League'
@@ -11,4 +13,5 @@ urlpatterns = [
     path('', include('news.urls')),
     path('tinymce/', include('tinymce.urls')),
     path('accounts/', include('allauth.urls')),
+    path('documents/', include('documents.urls', namespace='documents')),
 ]

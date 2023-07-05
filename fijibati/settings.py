@@ -9,9 +9,10 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
-from pathlib import Path
 import os
+from private_storage.permissions import allow_authenticated
+from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,7 +48,9 @@ INSTALLED_APPS = [
     'ckeditor',
     'tinymce',
     'news',
-    'crispy_forms',   
+    'crispy_forms',
+    'private_storage',  # Moved before 'documents' app
+    'documents',
 ]
 
 SITE_ID = 1
@@ -91,7 +94,7 @@ ROOT_URLCONF = 'fijibati.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates/news')],
+        'DIRS': [os.path.join(BASE_DIR,'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,7 +102,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request',
             ],
         },
     },
@@ -156,10 +158,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = os.path.join(BASE_DIR / "static"),  
-STATIC_ROOT = BASE_DIR / "staticfiles" 
-
-
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")] 
+STATIC_ROOT = BASE_DIR / Path("staticfiles")
 # Media files
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -171,7 +171,7 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Tinymce text editor tweak to show line breaks
-TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'
+TINYMCE_JS_URL = 'tinymce/tinymce.min.js'
 TINYMCE_COMPRESSOR = False
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': 'advlist autolink lists link image charmap print preview hr anchor pagebreak '

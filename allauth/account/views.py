@@ -140,7 +140,7 @@ class LoginView(
     RedirectAuthenticatedUserMixin, AjaxCapableProcessFormViewMixin, FormView
 ):
     form_class = LoginForm
-    template_name = "account/login." + app_settings.TEMPLATE_EXTENSION
+    template_name = "allauth/account/login." + app_settings.TEMPLATE_EXTENSION
     success_url = None
     redirect_field_name = "next"
 
@@ -842,7 +842,7 @@ password_reset_from_key_done = PasswordResetFromKeyDoneView.as_view()
 
 class LogoutView(TemplateResponseMixin, LogoutFunctionalityMixin, View):
 
-    template_name = "account/logout." + app_settings.TEMPLATE_EXTENSION
+    template_name = "allauth/account/logout." + app_settings.TEMPLATE_EXTENSION
     redirect_field_name = "next"
 
     def get(self, *args, **kwargs):

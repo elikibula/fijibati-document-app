@@ -9,6 +9,10 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import Group
+from .forms import DocumentForm
+from documents.models import Document, DocumentCategory
+
+
 
    
 # Login
@@ -67,7 +71,7 @@ def all_news(request):
     
     sorted_news = sorted(news_list, key=lambda news: news.pub_date, reverse=True)
 
-    return render(request,'all-news.html',{
+    return render(request,'news/all-news.html',{
         'all_news':all_news,
         'sorted_news': sorted_news[:24],
     })

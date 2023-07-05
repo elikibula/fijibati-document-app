@@ -9,6 +9,8 @@ import allauth
 
 
 
+
+
 urlpatterns=[
     path('',views.home,name='home'),
     path('all-news',views.all_news,name='all-news'),

@@ -1,10 +1,15 @@
+import zipfile
+import os
 from django.contrib import admin
-from .models import News, Category, FeaturedArticle
+from .models import News, Category, FeaturedArticle, DocumentCategory
 from django.contrib.admin import AdminSite
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
+from documents.models import Document, DocumentCategory
+from django.forms import inlineformset_factory
+
 
 # Unregister the default User admin
 admin.site.unregister(User)
@@ -14,9 +19,6 @@ admin.site.unregister(User)
 class UserAdmin(BaseUserAdmin):
     # Customize the User admin as needed
     pass
-
-
-
 
 admin.site.register(Category)
 
@@ -31,6 +33,7 @@ class FeaturedArticleAdmin(admin.ModelAdmin):
     list_filter = ('is_featured',)  # Add 'is_featured' to the filter options
 
 admin.site.register(FeaturedArticle, FeaturedArticleAdmin)
+
 
 
 
