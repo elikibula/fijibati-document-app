@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'private_storage',  # Moved before 'documents' app
     'documents',
+    'registration',
 ]
 
 SITE_ID = 1

@@ -14,4 +14,5 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('accounts/', include('allauth.urls')),
     path('documents/', include('documents.urls', namespace='documents')),
+    path('registration/', include('registration.urls', namespace='registration')),
 ]

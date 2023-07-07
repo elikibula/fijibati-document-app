@@ -9,20 +9,28 @@
     </div>
 </div>
 <div class="row my-3 ml-3 mr-3">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="card mb-3 shadow hover-effect pl-3 py-3 pr-3">
         <h4> {{ user.first_name }} , your FNRL Web Administration.</h4> 
         {% if request.user.is_staff %}
-        <button type="button" class="btn btn-dark"><a href="{% url 'admin:index' %}">Your FNRL Web Admin Dashboard</a></p>          
-        <button type="button" class="btn btn-dark mt-2"><a href="{% url 'account_logout' %}">Logout</a></button>
+        <a class="btn btn-dark" href="{% url 'admin:index' %}">Your FNRL Web Admin Dashboard</a>
+        <a class="btn btn-dark mt-2" href="{% url 'account_logout' %}">Logout</a>
+
         {% endif %}
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="card mb-3 shadow hover-effect pl-3 py-3 pr-3">
         <h4> {{ user.first_name }} , your FNRL Documents</h4> 
-        <button type="button" class="btn btn-dark"><a href="{% url 'documents:document_list' %}">Document Categories</a>
-        <button type="button" class="btn btn-dark mt-2"><a href="{% url 'documents:upload_document' %}">Upload Document</a>           
+        <a class="btn btn-dark" href="{% url 'documents:document_list' %}">Document Categories</a>
+        <a class="btn btn-dark mt-2" href="{% url 'documents:upload_document' %}">Upload Document</a>           
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-3 shadow hover-effect pl-3 py-3 pr-3">
+        <h4> {{ user.first_name }} , your FNRL DATA HUB</h4> 
+        <a class="btn btn-dark" href="{% url 'registration:dashboard' %}">Your DATA HUB Dashboard</a>
+        <a class="btn btn-dark mt-2" href="{% url 'admin:registration_participant_changelist' %}">Your Participant Admin</a>           
       </div>
     </div>
 </div>

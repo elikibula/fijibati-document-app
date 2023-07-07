@@ -28,6 +28,7 @@ class Document(models.Model):
     subcategory = models.ManyToManyField(SubCategory)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='documents_created')
+    groups = models.ManyToManyField(Group, blank=True)
 
     def __str__(self):
         return self.title
