@@ -11,9 +11,9 @@
 <div class="row my-3 ml-3 mr-3">
     <div class="col-md-4">
       <div class="card mb-3 shadow hover-effect pl-3 py-3 pr-3">
-        <h4> {{ user.first_name }} , your FNRL Web Administration.</h4> 
+        <h4> {{ user.first_name }} , malo a yaco mai!</h4> 
         {% if request.user.is_staff %}
-        <a class="btn btn-dark" href="{% url 'admin:index' %}">Your FNRL Web Admin Dashboard</a>
+        
         <a class="btn btn-dark mt-2" href="{% url 'account_logout' %}">Logout</a>
 
         {% endif %}
@@ -21,16 +21,16 @@
     </div>
     <div class="col-md-4">
       <div class="card mb-3 shadow hover-effect pl-3 py-3 pr-3">
-        <h4> {{ user.first_name }} , your FNRL Documents</h4> 
+        <h4> {{ user.first_name }} , a omu Komiti ni Veivakatorocaketaki Documents</h4> 
         <a class="btn btn-dark" href="{% url 'documents:document_list' %}">Document Categories</a>
         <a class="btn btn-dark mt-2" href="{% url 'documents:upload_document' %}">Upload Document</a>           
       </div>
     </div>
     <div class="col-md-4">
       <div class="card mb-3 shadow hover-effect pl-3 py-3 pr-3">
-        <h4> {{ user.first_name }} , your FNRL DATA HUB</h4> 
-        <a class="btn btn-dark" href="{% url 'registration:dashboard' %}">Your DATA HUB Dashboard</a>
-        <a class="btn btn-dark mt-2" href="{% url 'admin:registration_participant_changelist' %}">Your Participant Admin</a>           
+        <h4> {{ user.first_name }} , Veika Tale Eso</h4> 
+        <a class="btn btn-dark" href="#">Veika Tale Eso</a>
+        <a class="btn btn-dark mt-2" href="#">Veika Tale Eso</a>           
       </div>
     </div>
 </div>

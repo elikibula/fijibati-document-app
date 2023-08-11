@@ -3,7 +3,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 from django.contrib.auth import views as auth_views
-from django.urls import path, include
 from allauth import urls as allauth_urls
 import allauth
 
